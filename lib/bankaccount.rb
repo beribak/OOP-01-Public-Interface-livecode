@@ -15,7 +15,7 @@ class BankAccount
 
 	def iban
 		iban = @iban.split("-")		# => ["FR14", "2004", "1010", "0505", "0001", "3M02", "606"] 
- #                                           0       1       2        3      4       5       6, -1
+ #                                           0       1       2        3      4       5     6, -1
  		return "#{iban[0]}#{"x" * 20}#{iban[-1]}"
 	end
 
@@ -35,17 +35,17 @@ class BankAccount
 
 	def transaction_history(args = {})        #transaction_history({password: "12345"})
 		if args[:password] == @password
-			@transaction.each do |t|
-				puts t
+			@transaction.each do |transaction|
+				puts transaction
 			end
 		elsif args[:password].nil?
-			puts "You have to type a password"
+			puts "You have to enter a password!!!"
 		else 
-			puts "Wrong password"
+			puts "Wrong password!!!"
 		end
 	end
 
-	private
+	private          # private function. can be called only inside this class
 	
 	def add_transaction(amount)
 		@balance += amount
